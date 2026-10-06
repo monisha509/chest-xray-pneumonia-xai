@@ -1,0 +1,39 @@
+{
+  "record_type": "FINAL_FROZEN_TEST_EVALUATION",
+  "timestamp": "2026-10-06T16:01:17.254348+00:00",
+  "selected_model": "MobileNetV2",
+  "model_file": "C:\\Users\\monis\\OneDrive\\Desktop\\ChestXR\\models\\mobilenetv2.keras",
+  "model_sha256": "261b40749198dff988d60c0cf545e32251edbac1cd44e7c154dd0644f180af61",
+  "selected_threshold": 0.5,
+  "test_manifest_sha256": "26d3d9b481027ec302f70c47b99367646b7a9a0d02c2e3c253ff0cf62b2e44c8",
+  "sample_count": 624,
+  "final_test_metrics": {
+    "accuracy": 0.8478,
+    "precision": 0.8092,
+    "pneumonia_recall_sensitivity": 0.9897,
+    "specificity_normal_recall": 0.6111,
+    "f1_score": 0.8904,
+    "roc_auc": 0.9658
+  },
+  "confusion_matrix": {
+    "tn": 143,
+    "fp": 91,
+    "fn": 4,
+    "tp": 386,
+    "matrix_2x2": [
+      [
+        143,
+        91
+      ],
+      [
+        4,
+        386
+      ]
+    ]
+  },
+  "repeat_override_used": false,
+  "repeat_override_reason": null,
+  "seed": 42,
+  "tensorflow_version": "2.21.0",
+  "scikit_learn_version": "1.9.1"
+}
