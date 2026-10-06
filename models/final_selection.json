@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "timestamp": "2026-10-06T15:46:40.692107+00:00",
+  "selection_status": "FROZEN_FOR_FINAL_TEST",
+  "selected_model_name": "MobileNetV2",
+  "selected_model_file_path": "models/mobilenetv2.keras",
+  "selected_model_sha256": "261b40749198dff988d60c0cf545e32251edbac1cd44e7c154dd0644f180af61",
+  "selected_threshold": 0.5,
+  "threshold_rule": "predicted_probability >= 0.50 -> PNEUMONIA; predicted_probability < 0.50 -> NORMAL",
+  "seed": 42,
+  "selection_reason": "MobileNetV2 was selected because it achieved higher validation point estimates across all reported evaluation metrics (accuracy: 0.9701 vs 0.9318, precision: 0.9800 vs 0.9650, sensitivity/recall: 0.9800 vs 0.9429, specificity: 0.9409 vs 0.8987, F1: 0.9800 vs 0.9538, and ROC-AUC: 0.9934 vs 0.9690) compared to the Baseline CNN. Because the 95% group-ID bootstrap confidence intervals for specificity overlap between Baseline CNN [0.8594, 0.9336] and MobileNetV2 [0.9102, 0.9675], the selection is strictly based on higher validation point estimates without asserting statistical significance.",
+  "threshold_justification": "A decision threshold of 0.50 is the default operating threshold and was frozen based on validation analysis without tuning against the test set. On the validation set (N=938), it yields 14 false negatives and 14 false positives (687 true positives, 223 true negatives). This empirical parity is reported as an observed validation property and is not characterized as clinically balanced or implying equal clinical costs, in accordance with ChestXR being an educational/research prototype rather than a medical diagnostic system.",
+  "model_architecture_and_training": {
+    "model_name": "MobileNetV2",
+    "backbone": "MobileNetV2 (ImageNet pretrained, frozen weights)",
+    "fine_tuning": false,
+    "best_epoch": 17,
+    "best_val_loss": 0.091601,
+    "grad_cam_target_layer": "out_relu",
+    "input_shape": [
+      224,
+      224,
+      3
+    ],
+    "input_scaling": "tf.keras.applications.mobilenet_v2.preprocess_input ([-1, 1])"
+  },
+  "validation_evidence": {
+    "manifest_path": "data/splits/val.csv",
+    "manifest_sha256": "8613e21d15ef760ba7156339bff041c195788c63fcc324b5db3ee4670aa4cb23",
+    "sample_count": 938,
+    "class_distribution": {
+      "NORMAL": 237,
+      "PNEUMONIA": 701
+    },
+    "mobilenetv2_validation_metrics_at_threshold_0_50": {
+      "accuracy": 0.9701,
+      "precision": 0.98,
+      "pneumonia_recall_sensitivity": 0.98,
+      "specificity_normal_recall": 0.9409,
+      "f1_score": 0.98,
+      "roc_auc": 0.9934,
+      "confusion_matrix": {
+        "tn": 223,
+        "fp": 14,
+        "fn": 14,
+        "tp": 687
+      }
+    },
+    "baseline_cnn_validation_metrics_at_threshold_0_50": {
+      "accuracy": 0.9318,
+      "precision": 0.965,
+      "pneumonia_recall_sensitivity": 0.9429,
+      "specificity_normal_recall": 0.8987,
+      "f1_score": 0.9538,
+      "roc_auc": 0.969,
+      "confusion_matrix": {
+        "tn": 213,
+        "fp": 24,
+        "fn": 40,
+        "tp": 661
+      }
+    },
+    "group_id_bootstrap_confidence_intervals_2000_resamples": {
+      "mobilenetv2": {
+        "sensitivity_95ci": [
+          0.9689,
+          0.9893
+        ],
+        "specificity_95ci": [
+          0.9102,
+          0.9675
+        ],
+        "roc_auc_95ci": [
+          0.9894,
+          0.9967
+        ]
+      },
+      "baseline_cnn": {
+        "sensitivity_95ci": [
+          0.9232,
+          0.9619
+        ],
+        "specificity_95ci": [
+          0.8594,
+          0.9336
+        ],
+        "roc_auc_95ci": [
+          0.9568,
+          0.9798
+        ]
+      },
+      "ci_overlap_assessment": {
+        "sensitivity_overlap": false,
+        "specificity_overlap": true,
+        "roc_auc_overlap": false,
+        "statistical_significance_claimed": false
+      }
+    }
+  },
+  "frozen_manifest_fingerprints": {
+    "train_manifest_sha256": "82439b9b9aceb0d48d0ab1e33e98204eafc3d8becd963495543540debfc72b32",
+    "val_manifest_sha256": "8613e21d15ef760ba7156339bff041c195788c63fcc324b5db3ee4670aa4cb23",
+    "test_manifest_sha256": "26d3d9b481027ec302f70c47b99367646b7a9a0d02c2e3c253ff0cf62b2e44c8"
+  },
+  "code_and_environment_provenance": {
+    "python_version": "3.13.15",
+    "tensorflow_version": "2.21.0",
+    "scikit_learn_version": "1.9.1",
+    "code_sha256": {
+      "ml/preprocessing.py": "2f2f97a440d0386b31be4f67f73d9c867439b4cceacc4fe7fdace05a18c8cd42",
+      "ml/evaluate.py": "74fdce07907939e2a1ffdf78fae01ade7ff993b4866241c7629525cc80857074",
+      "ml/train_mobilenetv2.py": "37d63d61ee0c08a7d42c899c3401ea6e6a2fb39b89981ee1f92856c0b806844a",
+      "ml/train_baseline.py": "46177fdab0ffcc4ebb470aeac5f88b4e4144d2bc2b840b7bb0f24ba1e98d886c"
+    }
+  }
+}
