@@ -1,0 +1,40 @@
+{
+  "status": "VALIDATION DRY RUN \u2014 NOT TEST EVALUATION",
+  "description": "Validation dry run confirming test-gate mechanics without reading test data.",
+  "simulated_model": "baseline_cnn.keras",
+  "model_sha256": "13af543c0cd8d7df0351e2f796a1860fc6276bd64b08ca7d51d364c13307d95d",
+  "simulated_split": "val.csv (NO test data accessed)",
+  "manifest_sha256": "8613e21d15ef760ba7156339bff041c195788c63fcc324b5db3ee4670aa4cb23",
+  "timestamp": "2026-10-05T09:31:36.234381+00:00",
+  "dry_run_metrics": {
+    "threshold": 0.5,
+    "accuracy": 0.9318,
+    "precision": 0.965,
+    "pneumonia_recall_sensitivity": 0.9429,
+    "specificity_normal_recall": 0.8987,
+    "f1_score": 0.9538,
+    "roc_auc": 0.969,
+    "confusion_matrix": {
+      "tn": 213,
+      "fp": 24,
+      "fn": 40,
+      "tp": 661,
+      "matrix_2x2": [
+        [
+          213,
+          24
+        ],
+        [
+          40,
+          661
+        ]
+      ]
+    },
+    "support": {
+      "total_samples": 938,
+      "normal_count": 237,
+      "pneumonia_count": 701
+    }
+  },
+  "confirmation_rule_tested": "RUN FINAL TEST EVALUATION"
+}

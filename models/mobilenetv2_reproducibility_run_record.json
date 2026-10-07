@@ -1,0 +1,42 @@
+{
+  "model_name": "MobileNetV2_Transfer_Learning",
+  "random_seed": 42,
+  "python_version": "3.13.15",
+  "tensorflow_version": "2.21.0",
+  "input_shape": [
+    224,
+    224,
+    3
+  ],
+  "input_scaling": "Rescaling(scale=1./127.5, offset=-1.0) -> [-1.0, 1.0]",
+  "backbone": {
+    "name": "MobileNetV2",
+    "weights": "imagenet",
+    "include_top": false,
+    "freeze_base_initially": true,
+    "fine_tuning_active": false
+  },
+  "batch_size": 32,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "loss": "BinaryCrossentropy",
+  "class_weights": {
+    "0": 1.826,
+    "1": 0.6885
+  },
+  "grad_cam": {
+    "candidate_layer": "out_relu",
+    "candidate_layer_type": "ReLU",
+    "spatial_feature_shape": [
+      7,
+      7,
+      1280
+    ],
+    "alternate_conv_layer": "Conv_1"
+  },
+  "dataset_manifest_hashes": {
+    "train_csv_sha256": "82439b9b9aceb0d48d0ab1e33e98204eafc3d8becd963495543540debfc72b32",
+    "val_csv_sha256": "8613e21d15ef760ba7156339bff041c195788c63fcc324b5db3ee4670aa4cb23"
+  },
+  "isolation_guarantee": "test.csv strictly excluded from training, validation, and readiness checks"
+}

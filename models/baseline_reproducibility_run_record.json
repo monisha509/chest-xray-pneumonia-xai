@@ -1,0 +1,30 @@
+{
+  "model_name": "baseline_cnn",
+  "random_seed": 42,
+  "python_version": "3.13.15",
+  "tensorflow_version": "2.21.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "batch_size": 32,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "loss_function": "BinaryCrossentropy",
+  "maximum_epochs": 20,
+  "early_stopping_patience": 5,
+  "early_stopping_monitor": "val_loss",
+  "restore_best_weights": true,
+  "class_weights": {
+    "NORMAL (0)": 1.826,
+    "PNEUMONIA (1)": 0.6885
+  },
+  "target_gradcam_layer": "last_conv_relu",
+  "input_shape": [
+    224,
+    224,
+    3
+  ],
+  "sha256_fingerprints": {
+    "data/splits/train.csv": "82439b9b9aceb0d48d0ab1e33e98204eafc3d8becd963495543540debfc72b32",
+    "data/splits/val.csv": "8613e21d15ef760ba7156339bff041c195788c63fcc324b5db3ee4670aa4cb23",
+    "data/splits/test.csv": "26d3d9b481027ec302f70c47b99367646b7a9a0d02c2e3c253ff0cf62b2e44c8"
+  }
+}
